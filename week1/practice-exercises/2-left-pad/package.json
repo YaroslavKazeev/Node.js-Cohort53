@@ -1,0 +1,14 @@
+{
+  "name": "2-left-pad",
+  "version": "1.0.0",
+  "description": "String-padding function",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yaroslav Kazeev",
+  "license": "ISC",
+  "dependencies": {
+    "left-pad": "^1.3.0"
+  }
+}
