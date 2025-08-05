@@ -11,6 +11,10 @@ server.post("/weather", (req, res) => {
   const cityName = req.body.cityName;
   res.send(cityName);
 });
+// test text for making the request on Postman
+// {
+//   "cityName": "Amsterdam"
+// }
 
 server.listen(PORT, () =>
   console.log(`Server is listening on http://localhost:${PORT}`)
