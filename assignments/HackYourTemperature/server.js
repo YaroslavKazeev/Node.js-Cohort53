@@ -2,6 +2,8 @@ import express from "express";
 const server = express();
 const PORT = 3000;
 
+import { API_KEY } from "./sources/keys.js";
+
 // Add middleware to parse JSON data
 server.use(express.json());
 
