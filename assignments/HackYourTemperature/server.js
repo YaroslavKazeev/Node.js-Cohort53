@@ -16,11 +16,10 @@ server.post("/weather", async (req, res) => {
     );
     const data = await response.json();
     if (response.ok) {
-      console.log(data);
       const temperature = data.main.temp / 10;
       res.json({ cityName, temperature });
     } else {
-      throw new Error("Error: " + data.error);
+      throw new Error(`Error: ${data.message}, Status: ${data.cod}`);
     }
   } catch (error) {
     res
