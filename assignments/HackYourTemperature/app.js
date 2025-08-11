@@ -1,6 +1,6 @@
 import { API_KEY } from "./sources/keys.js";
 import express from "express";
-export const app = express();
+const app = express();
 app.use(express.json());
 
 app.get("/", (req, res) => res.send("hello from backend to frontend!"));
@@ -26,3 +26,5 @@ app.post("/weather", async (req, res) => {
     console.log(error.message);
   }
 });
+
+export { app };

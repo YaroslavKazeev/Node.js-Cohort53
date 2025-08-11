@@ -1,4 +1,4 @@
-import app from "../app.js";
+import { app } from "../app.js";
 import supertest from "supertest";
 
 // Create a test server instance
