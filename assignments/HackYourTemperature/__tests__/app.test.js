@@ -1,24 +1,14 @@
-describe("POST /", () => {
-  it("Quick test", () => {
-    expect(1).toBe(1);
-  });
-});
-
-import express from "express";
 import app from "../app.js";
 import supertest from "supertest";
 
 // Create a test server instance
-const server = express();
-server.use(express.json());
-const request = supertest(app(server));
+const request = supertest(app);
 
 describe("POST /weather", () => {
   it("should return temperature for a valid city", async () => {
     const response = await request
       .post("/weather")
       .send({ cityName: "Amsterdam" });
-
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty("cityName", "Amsterdam");
     expect(response.body).toHaveProperty("temperature");
