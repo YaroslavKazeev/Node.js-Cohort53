@@ -1,7 +1,6 @@
 import express from "express";
 const server = express();
 const PORT = 3000;
-
 import { API_KEY } from "./sources/keys.js";
 
 // Add middleware to parse JSON data
@@ -9,9 +8,26 @@ server.use(express.json());
 
 server.get("/", (req, res) => res.send("hello from backend to frontend!"));
 
-server.post("/weather", (req, res) => {
+server.post("/weather", async (req, res) => {
   const cityName = req.body.cityName;
-  res.send(cityName);
+  try {
+    const response = await fetch(
+      `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`
+    );
+    const data = await response.json();
+    if (response.ok) {
+      console.log(data);
+      const temperature = data.main.temp / 10;
+      res.json({ cityName, temperature });
+    } else {
+      throw new Error("Error: " + data.error);
+    }
+  } catch (error) {
+    res
+      .status(404)
+      .json({ error: "City is not found or the API key is wrong" });
+    console.log(error.message);
+  }
 });
 // test text for making the request on Postman
 // {
