@@ -24,8 +24,4 @@ export function app(server) {
       console.log(error.message);
     }
   });
-  // test text for making the request on Postman
-  // {
-  //   "cityName": "Amsterdam"
-  // }
 }
